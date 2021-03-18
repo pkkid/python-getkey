@@ -10,7 +10,7 @@ setup(
     author='Michael Shepanski',
     author_email='michael.shepanski@gmail.com',
     url='https://github.com/pkkid/python-getkeys',
-    py_modules=['getkeys.py'],
+    packages=['getkeys'],
     python_requires='>=3.5',
     long_description=open('README.md', 'r').read(),
     classifiers=[
