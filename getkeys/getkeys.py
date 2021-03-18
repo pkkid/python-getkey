@@ -6,10 +6,11 @@ import os
 from base64 import b64decode
 from getpass import getpass
 
-DEFAULT_PATHS = ['~/.config/keys.json', '~/Private/Secrets/keys.json']
-CONFIG = os.path.expanduser('~/.config/getkey.json')
+DEFAULT_PATHS = ['~/.config/keys.json']
+CONFIG = os.path.expanduser('~/.config/getkeys.json')
 if os.path.exists(CONFIG):
-    DEFAULT_PATHS = json.loads(CONFIG).get('paths')
+    with open(CONFIG, 'r') as handle:
+        DEFAULT_PATHS = json.load(handle).get('paths')
 
 
 def getkey(attrstr, paths=None, prompt=True, promptpass=False):
