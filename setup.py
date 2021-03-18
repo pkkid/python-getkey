@@ -4,7 +4,7 @@ from setuptools import setup
 
 
 setup(
-    name=' GetKey',
+    name='getkeys',
     version='1.0.0',
     description='Micro-package to get keys from a list of paths',
     author='Michael Shepanski',
