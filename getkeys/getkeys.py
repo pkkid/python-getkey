@@ -36,7 +36,8 @@ def getkey(attrstr, paths=None, prompt=True, promptpass=False):
     promptfunc = getpass if promptpass else input
     if prompt:
         return promptfunc(f'Enter {attrstr}: ')
-    raise Exception(f'Key not found: {attrstr}\n{"\n".join(paths)}')
+    pathstr = '\n' + '\n'.join(paths)
+    raise Exception(f'Key not found: {attrstr}{pathstr}')
 
 
 def rget(obj, attrstr, default=None, delim='.'):
