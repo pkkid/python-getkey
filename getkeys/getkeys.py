@@ -15,7 +15,8 @@ if os.path.exists(CONFIG):
 
 def getkey(attrstr, paths=None, prompt=True, promptpass=False):
     """ Searches the specified path locations for the specified key. """
-    for path in paths or DEFAULT_PATHS:
+    paths = paths or DEFAULT_PATHS
+    for path in paths:
         filepath = os.path.expanduser(path)
         if not os.path.exists(filepath):
             continue
@@ -35,7 +36,7 @@ def getkey(attrstr, paths=None, prompt=True, promptpass=False):
     promptfunc = getpass if promptpass else input
     if prompt:
         return promptfunc(f'Enter {attrstr}: ')
-    raise Exception(f'Key not found: {attrstr}')
+    raise Exception(f'Key not found: {attrstr}\n{"\n".join(paths)}')
 
 
 def rget(obj, attrstr, default=None, delim='.'):
