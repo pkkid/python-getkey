@@ -13,7 +13,7 @@ if os.path.exists(CONFIG):
         DEFAULT_PATHS = json.load(handle).get('paths')
 
 
-def getkey(attrstr, paths=None, prompt=True, promptpass=False):
+def getkey(attrstr, paths=None, prompt=True, promptpass=False, allow_none=False):
     """ Searches the specified path locations for the specified key. """
     paths = paths or DEFAULT_PATHS
     for path in paths:
@@ -36,6 +36,8 @@ def getkey(attrstr, paths=None, prompt=True, promptpass=False):
     promptfunc = getpass if promptpass else input
     if prompt:
         return promptfunc(f'Enter {attrstr}: ')
+    if allow_none:
+        return None
     pathstr = '\n' + '\n'.join(paths)
     raise Exception(f'Key not found: {attrstr}{pathstr}')
 
